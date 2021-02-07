@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using System.Collections;
 using LuaInterface;
 
@@ -52,6 +53,33 @@ namespace LuaFramework {
             main = null;    
         }
         
+        #region luaide 调试库添加
+        /// <summary>
+        /// 如果项目中没有luasocket 请打开
+        /// </summary>
+        /// <param name="L"></param>
+        /// <returns></returns>
+        [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+        static int LuaOpen_Socket_Core(IntPtr L)
+        {
+            return LuaDLL.luaopen_socket_core(L);
+        }
+        static int LuaOpen_Mime_Core(IntPtr L)
+        {
+            return LuaDLL.luaopen_mime_core(L);
+        }
+        
+        protected void OpenLuaSocket()
+        {
+            LuaConst.openLuaSocket = true;
+
+            lua.BeginPreLoad();
+            lua.RegFunction("socket.core", LuaOpen_Socket_Core);
+            lua.RegFunction("mime.core", LuaOpen_Mime_Core);                
+            lua.EndPreLoad(); 
+        }
+        #endregion
+        
         /// <summary>
         /// 初始化加载第三方库
         /// </summary>
@@ -61,8 +89,15 @@ namespace LuaFramework {
             lua.OpenLibs(LuaDLL.luaopen_protobuf_c);
             lua.OpenLibs(LuaDLL.luaopen_lpeg);
             lua.OpenLibs(LuaDLL.luaopen_bit);
+            
+            // luaide socket 开启
             lua.OpenLibs(LuaDLL.luaopen_socket_core);
-
+            if (LuaConst.openLuaSocket)
+            {
+                OpenLuaSocket();            
+            }
+            // end luaide
+            
             this.OpenCJson();
         }
 

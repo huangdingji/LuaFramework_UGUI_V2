@@ -6,6 +6,8 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
 using LuaFramework;
+// ReSharper disable HeuristicUnreachableCode
+#pragma warning disable 162
 
 public class Packager {
     public static string platform = string.Empty;

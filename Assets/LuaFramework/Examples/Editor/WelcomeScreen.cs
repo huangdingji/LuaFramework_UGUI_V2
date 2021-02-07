@@ -114,7 +114,7 @@ public class WelcomeScreen : EditorWindow
             }
             else if ((this.mForumImageRect.Contains(mousePosition) || this.mForumHeaderRect.Contains(mousePosition)) || this.mForumDescriptionRect.Contains(mousePosition))
             {
-                //LuaBinding.EncodeLuaFile();
+//                LuaBinding.EncodeLuaFile();
             }
             else if ((this.mContactImageRect.Contains(mousePosition) || this.mContactHeaderRect.Contains(mousePosition)) || this.mContactDescriptionRect.Contains(mousePosition))
             {

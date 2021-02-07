@@ -81,7 +81,7 @@ public class LuaClient : MonoBehaviour
             Debugger.LogWarning("ZeroBraneStudio not install or LuaConst.zbsDir not right");
             return;
         }
-
+        
         if (!LuaConst.openLuaSocket)
         {                            
             OpenLuaSocket();

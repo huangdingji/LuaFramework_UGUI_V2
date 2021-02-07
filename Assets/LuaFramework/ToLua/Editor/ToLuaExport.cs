@@ -135,6 +135,7 @@ public static class ToLuaExport
         "Light.lightmapBakeType",
 		"Light.shadowAngle",
 		"Light.shadowRadius",
+        "Light.SetLightDirty",
 		"Security.GetChainOfTrustValue",
         "Texture2D.alphaIsTransparency",
         "WWW.movie",
@@ -153,6 +154,7 @@ public static class ToLuaExport
         "TextureFormat.DXT1Crunched",
         "TextureFormat.DXT5Crunched",
         "Texture.imageContentsHash",
+        "QualitySettings.streamingMipmapsRenderersPerFrame",
         //NGUI
         "UIInput.ProcessEvent",
         "UIWidget.showHandlesWithMoveTool",
